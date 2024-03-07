@@ -16,10 +16,11 @@
     <script>
       $.ajax({
         type: "GET",
-        url: "http://spartacodingclub.shop/sparta_api/weather/medan",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=medan&appid=2a7e6298ee5b3baae7c961375d64c797",
         success: function (response) {
-          let temp = response["temp"];
-          let city = response["city"];
+          let temp = response["main"]["temp"];
+          temp = Math.round(temp - 273.15);
+          let city = response["name"];
           $("#temp").html(temp);
           $("#city").html(city);
         },
